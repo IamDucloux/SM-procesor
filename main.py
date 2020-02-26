@@ -33,3 +33,22 @@ nlp = spacy.load("es_core_news_sm")
 # print(mensaje)
 # f.close
 # =============================================================================
+
+f=open('texto.txt','r')
+text=f.read()
+print(text)
+f.close
+
+doc = nlp(text)
+
+print("Noun phrases:", [chunk.text for chunk in doc.noun_chunks])
+print("Verbs:", [token.lemma_ for token in doc if token.pos_ == "VERB"])
+
+# Find named entities, phrases and concepts
+for entity in doc.ents:
+    print(entity.text, entity.label_)
+    
+    
+
+
+
